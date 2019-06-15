@@ -1,0 +1,16 @@
+<div
+class="panel panel-default"
+>
+<!-- the heading fo rthe panel is printed here,
+   the content is shown in the parent component
+  note the local refrence -->
+<div class="panel-heading" #heading>{{ name }}</div>
+<div class="panel-body">
+    <!-- ng-content marks the place that angular should add content in the parent compemnent
+       if it has any
+      the content goes in between the opening and closing tag for this component. 
+    See app.component.html-->
+    <ng-content></ng-content>
+
+</div>
+</div>

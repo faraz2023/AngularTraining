@@ -1,0 +1,23 @@
+<div class="container">
+  <!--(serverCreated) indicates that we are listening for this event the
+     way we listen for a button to be clicked see the .ts for app-cockpit to understand-->
+<app-cockpit (serverCreated)="onServerAdded($event)"
+ (bpCreated)="onBlueprintAdded($event)"></app-cockpit>
+  <hr>
+  <div class="row">
+    <div class="col-xs-12">
+
+      <button class="btn btn-primary" (click)=onChangeFirst()>Click me to see how ngOnChange() works </button>
+      <br><br>
+      <button class="btn btn-danger" (click)=onDestoryFirst()>Click me to see how ngOnDestroy() works </button>
+      <!-- see how I added content between oppening and closing-->
+<app-server-element *ngFor="let serverElement of serverElements"
+[srvElement]="serverElement"
+[name] = "serverElement.name">
+<p #contentParagraph>
+    <strong *ngIf="serverElement.type === 'server'" style="color: green">{{ serverElement.content }}</strong>
+    <em *ngIf="serverElement.type === 'blueprint'">{{ serverElement.content }}</em>
+</p></app-server-element>
+    </div>
+  </div>
+</div>

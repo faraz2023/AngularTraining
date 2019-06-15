@@ -1,0 +1,15 @@
+<a  href="#"
+(click)="onSelected()"
+ class="list-group-item clearfix">
+  <div class="pull-left">
+    <h4 class="list-group-item-heading">{{recipe.name}}</h4>
+    <p class="list-group-item-text">{{recipe.description}}</p>
+  </div>
+    <!---you can also use src={{recipe.imagePath}}-->
+    <span class="pull-right">
+    <img class="img-responsive" 
+    [src]="recipe.imagePath" 
+    style="max-height: 80px; max-width: 80px"
+    alt="ProperGodzilla">
+  </span>
+</a>

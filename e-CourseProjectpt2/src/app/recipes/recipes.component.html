@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="col-md-5">
+    <app-recipe-list (recipeSelected)="showRecipe($event)"></app-recipe-list>
+  </div>
+  <div class="col-md-7">
+    <!-- what we have done to show recipe-detail is a a temporally solution-->
+    <app-recipe-detail *ngIf="selctedRecpie; else infoText"
+    [recipeShow]="selctedRecpie"
+    ></app-recipe-detail>
+    <ng-template #infoText>
+      <p>please select a recpie</p>
+    </ng-template>
+    
+  </div>
+</div>

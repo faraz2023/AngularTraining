@@ -1,0 +1,25 @@
+<div class="container">
+<div class="row">
+  <div class="col-xs-12">
+    <button class="btn btn success">New old Recipe</button>
+  </div>
+  </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-xs-12">
+    <a *ngFor="let recipe of recipesArray; let i = index"  href="{{recipe.imagePath}}" class="list-group-item clearfix">
+      <div class="pull-left">
+        <h4 class="list-group-item-heading">{{recipesArray[i].name}}</h4>
+        <p class="list-group-item-text">{{recipe.description}}</p>
+      </div>
+        <!---you can also use src={{recipe.imagePath}}-->
+        <span class="pull-right">
+        <img class="img-responsive" 
+        [src]="recipe.imagePath" 
+        style="max-height: 80px; max-width: 80px"
+        alt="ProperGodzilla">
+      </span>
+    </a>
+    </div>
+</div>

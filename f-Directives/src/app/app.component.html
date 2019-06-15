@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <button
+        class="btn btn-primary"
+        (click)="onlyOdd = !onlyOdd">Only show odd numbers</button>
+      <br><br>
+      <ul class="list-group">
+        <!--Note that you can have aonly one structural directive on each element-->
+        <div *ngIf="onlyOdd">
+            <li
+            class="list-group-item"
+            [ngClass]="{three_d: num % 3 === 0}"
+            [ngStyle]="{backgroundColor: num % 5 === 0 ? 'green' : transparent}"
+            *ngFor="let num of oddNumbers">
+            {{ num }}
+          </li>
+        </div>
+        <div *ngIf="!onlyOdd">
+            <li
+            class="list-group-item"
+            *ngFor="let num of evenNumbers">
+            {{ num }}
+          </li>
+        </div>
+      </ul>
+      <ng-template [ngIf]="onlyOdd">
+        <p>Only odd</p>
+      </ng-template>
+
+      <p appBasicHighlight>Stylled with basic Directives</p>
+      <p appBetterHighlight>Stylled with Renderer2 Directives</p>
+      
+    </div>
+  </div>
+</div>
