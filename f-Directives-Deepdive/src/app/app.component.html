@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <button
+        class="btn btn-primary"
+        (click)="onlyOdd = !onlyOdd">Only show odd numbers</button>
+      <br><br>
+      <ul class="list-group">
+        <!--Note that you can have aonly one structural directive on each element-->
+        <div *ngIf="onlyOdd">
+            <li
+            class="list-group-item"
+            [ngClass]="{three_d: num % 3 === 0}"
+            [ngStyle]="{backgroundColor: num % 5 === 0 ? 'green' : transparent}"
+            *ngFor="let num of oddNumbers">
+            {{ num }}
+          </li>
+        </div>
+        <div *ngIf="!onlyOdd">
+            <li
+            class="list-group-item"
+            *ngFor="let num of evenNumbers">
+            {{ num }}
+          </li>
+        </div>
+      </ul>
+
+      <!--an example of a structural directive-->
+      <div *appUnless="!onlyOdd">
+        <li
+        class="list-group-item"
+        *ngFor="let num of evenNumbers">
+        {{ num }} but beware that I am written by a manually created "else" as a structural directive
+      </div>
+      <!--This is a rewrite of the *ngIf by dataBinding-->
+      <ng-template [ngIf]="onlyOdd">
+        <p> This paragraph is written as a rewrite of *ngIf with [ngIf] and propertyBinidng to show how structural directives work
+          Only odd</p>
+      </ng-template>
+
+      <p appBasicHighlight>Stylled with basic Directives</p>
+      <p appBetterHighlight>Stylled with (Betterhighlight) Renderer2 Directives</p>
+      
+      <p appDoubleBetterDirective>Stylled with (DoubleBetter)s Directives</p>
+      <p appHostBindingDirective>Stylled with (Hostbinding)s (no Renderer2) Directives THIS IS SO INTERESTING Because I am Directly accessing and Modifiying the DOM element</p>
+      <p appUserDynamicDirective [defaultColor]="'grey'" [highlightColor]="'green'" > The coder can Dynamically Chose my color</p>
+
+      <div [ngSwitch]="value">
+      <p *ngSwitchCase="5">
+        value is 5
+      </p>
+      <p *ngSwitchCase="value > 7">
+        value is 10
+      </p>
+      <p *ngSwitchDefault>
+        value is strange
+      </p>
+
+    </div>
+  </div>
+</div>
